@@ -4,7 +4,7 @@
   "description": "Microservice for Employee management",
   "main": "server.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon server.js"
+    "dev": "NODE_ENV=development nodemon server.js --exec babel-node -e js"
   },
   "author": "Nam Vo <vhnam2504@gmail.com>",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "dotenv": "^6.2.0",
     "errorhandler": "^1.5.0",
     "express": "^4.16.4",
+    "express-paginate": "^1.0.0",
     "helmet": "^3.15.0",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.4",
@@ -22,6 +23,9 @@
     "winston": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "nodemon": "^1.18.8"
   }
 }

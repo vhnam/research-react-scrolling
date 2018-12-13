@@ -8,6 +8,7 @@ module.exports = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
 
+    API_LIMIT: process.env.API_LIMIT,
     API_PORT: process.env.API_PORT,
     API_VERSION: process.env.API_VERSION,
   },
