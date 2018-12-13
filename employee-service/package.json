@@ -1,0 +1,27 @@
+{
+  "name": "employee-service",
+  "version": "1.0.0",
+  "description": "Microservice for Employee management",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon server.js"
+  },
+  "author": "Nam Vo <vhnam2504@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
+  }
+}
