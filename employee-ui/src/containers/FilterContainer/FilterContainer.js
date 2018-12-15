@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import style from './FilterContainer.css';
 
@@ -9,14 +10,43 @@ import TextField from '../../components/TextField';
 import Select from '../../components/Select';
 import Button from '../../components/Button';
 
+import { getEmployees } from '../../states/Employee/actions';
+
 const hiringYears = range(1985, 2000);
-const genders = [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }];
+const genders = [
+  { value: 'A', text: 'All' },
+  { value: 'M', text: 'Male' },
+  { value: 'F', text: 'Female' }
+];
 
 class FilterContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      firstName: null,
+      lastName: null,
+      gender: null,
+      hiringYear: null
+    };
+
+    this.filter();
+  }
 
   search = () => {
     console.log('ahihi');
-  }
+  };
+
+  filter = () => {
+    const { firstName, lastName, gender, hiringYear } = this.state;
+
+    this.props.dispatch(getEmployees({
+      first_name: firstName,
+      last_name: lastName,
+      gender: ('A' === gender) ? null : gender,
+      hiring_year: hiringYear
+    }));
+  };
 
   render() {
     return (
@@ -59,10 +89,15 @@ class FilterContainer extends Component {
             </div>
           </div>
           <div className={style.row}>
-            <div className={style.column}></div>
+            <div className={style.column} />
             <div className={style.column}>
               <div className={style.btn_search}>
-                <Button type="button" text="Search" buttonStyle="primary" onClick={this.search} />
+                <Button
+                  type="button"
+                  text="Search"
+                  buttonStyle="primary"
+                  onClick={this.search}
+                />
               </div>
             </div>
           </div>
@@ -72,4 +107,8 @@ class FilterContainer extends Component {
   }
 }
 
-export default FilterContainer;
+const connectToRedux = connect(state => ({
+  employees: state.homepage.employees
+}));
+
+export default connectToRedux(FilterContainer);

@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.text_left {
+  text-align: left;
+}
+
 .divider {
   margin: 1rem 0;
   border-bottom: .125rem solid #e0e0e0;

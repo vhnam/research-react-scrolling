@@ -6,3 +6,8 @@ body {
   margin: 0;
   background-color: #fafafa;
 }
+
+table thead tr th,
+table tbody tr td {
+  padding: .25rem;
+}
