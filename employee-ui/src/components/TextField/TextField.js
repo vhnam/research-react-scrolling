@@ -6,7 +6,7 @@ import style from './TextField.css';
 
 class TextField extends Component {
   render() {
-    const { label, name, placeholder, index } = this.props;
+    const { label, name, placeholder, index, onChange } = this.props;
 
     return (
       <UID>
@@ -22,6 +22,7 @@ class TextField extends Component {
               placeholder={placeholder}
               spellCheck="false"
               tabIndex={index}
+              onChange={e => onChange(e.target.value)}
             />
           </div>
         )}
@@ -34,7 +35,8 @@ TextField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string,
   placeholder: PropTypes.string,
-  index: PropTypes.number
-}
+  index: PropTypes.number,
+  onChange: PropTypes.func.isRequired
+};
 
 export default TextField;

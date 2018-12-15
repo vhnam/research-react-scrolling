@@ -6,7 +6,7 @@ import style from './Select.css';
 
 class Select extends Component {
   render() {
-    const { options, name, label, index } = this.props;
+    const { options, name, label, index, onChange } = this.props;
 
     return (
       <UID>
@@ -15,7 +15,13 @@ class Select extends Component {
             <label htmlFor={id} className={style.label}>
               {label}
             </label>
-            <select name={name} id={id} className={style.select} tabIndex={index}>
+            <select
+              name={name}
+              id={id}
+              className={style.select}
+              tabIndex={index}
+              onChange={e => onChange(e.target.value)}
+            >
               {options.map(option => (
                 <option key={option.value} value={option.value}>
                   {option.text}
@@ -33,7 +39,8 @@ Select.propTypes = {
   options: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
   index: PropTypes.number,
-  name: PropTypes.string
-}
+  name: PropTypes.string,
+  onChange: PropTypes.func.isRequired
+};
 
 export default Select;

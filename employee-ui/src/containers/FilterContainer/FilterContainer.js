@@ -12,7 +12,12 @@ import Button from '../../components/Button';
 
 import { getEmployees } from '../../states/Employee/actions';
 
-const hiringYears = range(1985, 2000);
+let hiringYears = range(1985, 2000);
+hiringYears.push({
+  value: null,
+  text: 'All'
+});
+
 const genders = [
   { value: 'A', text: 'All' },
   { value: 'M', text: 'Male' },
@@ -33,19 +38,23 @@ class FilterContainer extends Component {
     this.filter();
   }
 
-  search = () => {
-    console.log('ahihi');
+  handleChange = name => value => {
+    this.setState({
+      [name]: value
+    });
   };
 
   filter = () => {
     const { firstName, lastName, gender, hiringYear } = this.state;
 
-    this.props.dispatch(getEmployees({
-      first_name: firstName,
-      last_name: lastName,
-      gender: ('A' === gender) ? null : gender,
-      hiring_year: hiringYear
-    }));
+    this.props.dispatch(
+      getEmployees({
+        first_name: firstName,
+        last_name: lastName,
+        gender: 'A' === gender ? null : gender,
+        hiring_year: hiringYear
+      })
+    );
   };
 
   render() {
@@ -59,6 +68,7 @@ class FilterContainer extends Component {
                 name="first_name"
                 placeholder="Enter first name"
                 tabIndex="0"
+                onChange={this.handleChange('firstName')}
               />
             </div>
             <div className={style.column}>
@@ -67,6 +77,7 @@ class FilterContainer extends Component {
                 name="last_name"
                 placeholder="Enter last name"
                 tabIndex="1"
+                onChange={this.handleChange('lasttName')}
               />
             </div>
           </div>
@@ -77,6 +88,7 @@ class FilterContainer extends Component {
                 name="gender"
                 options={genders}
                 tabIndex="2"
+                onChange={this.handleChange('gender')}
               />
             </div>
             <div className={style.column}>
@@ -85,6 +97,7 @@ class FilterContainer extends Component {
                 name="hiring_year"
                 options={hiringYears}
                 tabIndex="3"
+                onChange={this.handleChange('hiringYear')}
               />
             </div>
           </div>
@@ -94,10 +107,11 @@ class FilterContainer extends Component {
               <div className={style.btn_search}>
                 <Button
                   type="button"
-                  text="Search"
                   buttonStyle="primary"
-                  onClick={this.search}
-                />
+                  onClick={this.filter}
+                >
+                  Search
+                </Button>
               </div>
             </div>
           </div>

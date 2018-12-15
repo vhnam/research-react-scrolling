@@ -9,5 +9,5 @@ body {
 
 table thead tr th,
 table tbody tr td {
-  padding: .25rem;
+  padding: 0.25rem 0.5rem;
 }

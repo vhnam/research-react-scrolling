@@ -9,7 +9,7 @@ const cx = classnames.bind(style);
 
 class Button extends Component {
   render() {
-    const { type, text, onClick, buttonStyle } = this.props;
+    const { type, children, onClick, buttonStyle } = this.props;
 
     return (
       <button
@@ -17,7 +17,7 @@ class Button extends Component {
         className={cx('wrapper', buttonStyle)}
         onClick={onClick}
       >
-        {text}
+        {children}
       </button>
     );
   }
@@ -25,7 +25,7 @@ class Button extends Component {
 
 Button.propTypes = {
   type: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   buttonStyle: PropTypes.string,
   onClick: PropTypes.func
 };
