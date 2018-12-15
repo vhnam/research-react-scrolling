@@ -1,0 +1,26 @@
+.text_right {
+  text-align: right;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.divider {
+  margin: 1rem 0;
+  border-bottom: .125rem solid #e0e0e0;
+}
+
+.table_header {
+  width: 100%;
+  color: #2a3b90;
+}
+
+.table_body {
+  width: 100%;
+}
+
+.scrollable {
+  max-height: 30rem;
+  overflow-y: auto;
+}
