@@ -12,11 +12,13 @@ import Button from '../../components/Button';
 
 import { getEmployees } from '../../states/Employee/actions';
 
-let hiringYears = range(1985, 2000);
-hiringYears.push({
-  value: null,
-  text: 'All'
-});
+let hiringYears = [
+  {
+    value: 'A',
+    text: 'All'
+  }
+];
+hiringYears = hiringYears.concat(range(2000, 1985, true));
 
 const genders = [
   { value: 'A', text: 'All' },
@@ -49,10 +51,10 @@ class FilterContainer extends Component {
 
     this.props.dispatch(
       getEmployees({
-        first_name: firstName,
-        last_name: lastName,
+        first_name: firstName ? firstName : null,
+        last_name: lastName ? lastName : null,
         gender: 'A' === gender ? null : gender,
-        hiring_year: hiringYear
+        hiring_year: 'A' === hiringYear ? null : hiringYear
       })
     );
   };
@@ -77,7 +79,7 @@ class FilterContainer extends Component {
                 name="last_name"
                 placeholder="Enter last name"
                 tabIndex="1"
-                onChange={this.handleChange('lasttName')}
+                onChange={this.handleChange('lastName')}
               />
             </div>
           </div>
