@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { UID } from 'react-uid';
 
 import style from './TextField.css';
@@ -20,13 +21,20 @@ class TextField extends Component {
               name={name}
               placeholder={placeholder}
               spellCheck="false"
-              index={index}
+              tabIndex={index}
             />
           </div>
         )}
       </UID>
     );
   }
+}
+
+TextField.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  index: PropTypes.number
 }
 
 export default TextField;

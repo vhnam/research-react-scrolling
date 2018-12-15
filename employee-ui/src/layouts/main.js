@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
 
@@ -17,6 +18,10 @@ class MainLayout extends Component {
       </div>
     )
   }
+}
+
+MainLayout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default MainLayout;

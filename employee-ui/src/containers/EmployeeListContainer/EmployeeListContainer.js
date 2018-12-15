@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Card from '../../components/Card';
 
@@ -70,6 +71,10 @@ class EmployeeListContainer extends Component {
       </Card>
     )
   }
+}
+
+EmployeeListContainer.propTypes = {
+  employees: PropTypes.array.isRequired
 }
 
 export default EmployeeListContainer;
