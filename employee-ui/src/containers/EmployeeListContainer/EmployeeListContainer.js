@@ -16,6 +16,7 @@ class EmployeeListContainer extends Component {
           <td className={style.text_right}>{employee.birth_date}</td>
           <td className={style.text_left}>{employee.gender}</td>
           <td className={style.text_right}>{employee.hire_date}</td>
+          <td>&nbsp;</td>
         </tr>
       ))
     }
@@ -35,11 +36,12 @@ class EmployeeListContainer extends Component {
         <table className={style.table_header}>
           <colgroup>
             <col width="10%" />
-            <col width="25%" />
-            <col width="25%" />
+            <col width="24%" />
+            <col width="24%" />
             <col width="15%" />
             <col width="10%" />
             <col width="15%" />
+            <col width="2%" />
           </colgroup>
           <thead>
             <tr>
@@ -49,6 +51,7 @@ class EmployeeListContainer extends Component {
               <th className={style.text_right}>Birthday</th>
               <th className={style.text_left}>Gender</th>
               <th className={style.text_right}>Hiring date</th>
+              <th>&nbsp;</th>
             </tr>
           </thead>
         </table>
@@ -57,11 +60,12 @@ class EmployeeListContainer extends Component {
         <table className={style.table_body}>
           <colgroup>
             <col width="10%" />
-            <col width="25%" />
-            <col width="25%" />
+            <col width="24%" />
+            <col width="24%" />
             <col width="15%" />
             <col width="10%" />
             <col width="15%" />
+            <col width="2%" />
           </colgroup>
           <tbody>
             {this.renderList(employees)}
