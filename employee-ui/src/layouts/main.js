@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Header from '../components/Header';
 
+import style from './main.css';
+
 class MainLayout extends Component {
   render() {
     const { children } = this.props;
@@ -9,7 +11,9 @@ class MainLayout extends Component {
     return (
       <div>
         <Header />
-        {children}
+        <div className={style.wrapper}>
+          {children}
+        </div>
       </div>
     )
   }

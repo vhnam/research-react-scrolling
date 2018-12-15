@@ -1,0 +1,11 @@
+.wrapper {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .wrapper {
+    padding: 0 1rem;
+  }
+}

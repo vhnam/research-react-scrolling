@@ -1,0 +1,28 @@
+.wrapper {
+  margin-bottom: .5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: .25rem;
+  font-weight: 600;
+  color: #2a3b90;
+}
+
+.text_field {
+  padding: .625rem 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+  background-color: transparent;
+  border-bottom: .125rem solid #e0e0e0;
+}
+
+.text_field::placeholder {
+  color: #757575;
+}
+
+.text_field:focus {
+  border-bottom: .125rem solid #2a3b90;
+}

@@ -3,13 +3,17 @@ import { Provider } from 'react-redux';
 
 import MainLayout from './layouts/main';
 
+import Homepage from './pages/Homepage';
+
 class App extends Component {
   render() {
     const { store } = this.props;
 
     return (
       <Provider store={store}>
-        <MainLayout />
+        <MainLayout>
+          <Homepage />
+        </MainLayout>
       </Provider>
     );
   }

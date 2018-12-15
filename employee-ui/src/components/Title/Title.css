@@ -1,0 +1,14 @@
+.text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  line-height: 3.75rem;
+  font-weight: 600;
+  color: #0f0f18;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .text {
+    font-size: 2rem;
+  }
+}
