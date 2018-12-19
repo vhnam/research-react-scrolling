@@ -23,7 +23,7 @@ class EmployeeListContainer extends Component {
 
     return (
       <tr>
-        <td colSpan="6" className={style.text_center}>No employee</td>
+        <td colSpan="7" className={style.text_center}>No employee</td>
       </tr>
     )
   }
