@@ -18,7 +18,10 @@ export const getEmployees = credentials => {
         params: credentials
       })
       .then(res => {
-        dispatch(getEmployees__SUCCESS(res.data));
+        let data = res.data;
+        data.credentials = credentials;
+
+        dispatch(getEmployees__SUCCESS(data));
       })
       .catch(err => {
         dispatch(getEmployees__FAILED(err));
