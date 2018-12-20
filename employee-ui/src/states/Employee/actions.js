@@ -11,6 +11,11 @@ export const getEmployees__FAILED = data => ({
   payload: data
 });
 
+export const resetEmployees_RESET = () => ({
+  type: 'RESET',
+  payload: null
+});
+
 export const getEmployees = credentials => {
   return dispatch => {
     return axios
@@ -29,3 +34,9 @@ export const getEmployees = credentials => {
       });
   };
 };
+
+export const resetEmployees = () => dispatch => {
+  return new Promise((resolve) => {
+    resolve(dispatch(resetEmployees_RESET()));
+  })
+}

@@ -6,7 +6,7 @@ import style from './Select.css';
 
 class Select extends Component {
   render() {
-    const { options, name, label, index, onChange } = this.props;
+    const { options, name, label, index, onChange, value } = this.props;
 
     return (
       <UID>
@@ -20,6 +20,7 @@ class Select extends Component {
               id={id}
               className={style.select}
               tabIndex={index}
+              value={!value ? '' : value}
               onChange={e => onChange(e.target.value)}
             >
               {options.map(option => (

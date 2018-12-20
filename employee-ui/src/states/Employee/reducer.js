@@ -24,6 +24,12 @@ const reducer = (state = initialState, action) => {
           data: initialState.employees
         }
       );
+    case 'RESET':
+      return {
+        ...state,
+        employees: [],
+        pagination: null
+      };
     default:
       return state;
   }

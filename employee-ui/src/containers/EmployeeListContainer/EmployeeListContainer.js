@@ -51,6 +51,10 @@ class EmployeeListContainer extends Component {
   }
 
   getEmployees = () => {
+    if (!this.props.pagination) {
+      return;
+    }
+
     const { current_page, last_page, credentials } = this.props.pagination;
 
     if (current_page <= last_page) {
