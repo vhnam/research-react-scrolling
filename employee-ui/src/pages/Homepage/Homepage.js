@@ -16,7 +16,6 @@ class Homepage extends Component {
       <div className={style.wrapper}>
         <Title text="Employee Management" />
         <FilterContainer />
-        <div className={style.divider} />
         <EmployeeListContainer employees={employees} pagination={pagination} />
       </div>
     );

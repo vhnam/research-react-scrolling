@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import bindClassnames from 'classnames/bind';
 
 import Card from '../../components/Card';
 
 import style from './EmployeeListContainer.css';
 
 import { getEmployees } from '../../states/Employee/actions';
+
+let cx = bindClassnames.bind(style);
 
 class EmployeeListContainer extends Component {
   constructor(props) {
@@ -53,10 +57,10 @@ class EmployeeListContainer extends Component {
       let _credentials = credentials;
       _credentials.page = parseInt(current_page) + 1;
 
-      // this.setState({ isLoading: true });
-
-      this.props.dispatch(getEmployees(_credentials)).then(() => {
-        // this.setState({ isLoading: false });z
+      this.setState({ isLoading: true }, () => {
+        this.props.dispatch(getEmployees(_credentials)).then(() => {
+          this.setState({ isLoading: false });
+        });
       });
     }
   };
@@ -87,8 +91,17 @@ class EmployeeListContainer extends Component {
 
   render() {
     const { employees } = this.props;
+    const { isLoading } = this.state;
 
-    const loadingTextCSS = { display: this.state.isLoading ? 'block' : 'none' };
+    const loadingState = cx({
+      'visible': !isLoading,
+      'invisible': isLoading
+    });
+
+    const dividerState = cx({
+      'visible': isLoading,
+      'invisible': !isLoading
+    });
 
     return (
       <Card>
@@ -114,7 +127,10 @@ class EmployeeListContainer extends Component {
             </tr>
           </thead>
         </table>
-        <div className={style.divider} />
+        <div className={classnames(style.divider, loadingState)} />
+        <div className={classnames(style.progress, dividerState)}>
+          <div className={style.indeterminate} />
+        </div>
         <div className={style.scrollable}>
           <table className={style.table_body}>
             <colgroup>
@@ -128,12 +144,7 @@ class EmployeeListContainer extends Component {
             </colgroup>
             <tbody>{this.renderList(employees)}</tbody>
           </table>
-          <div
-            ref={loadingRef => (this.loadingRef = loadingRef)}
-            className={style.loader}
-          >
-            <span style={loadingTextCSS}>Loading...</span>
-          </div>
+          <div ref={loadingRef => (this.loadingRef = loadingRef)} />
         </div>
       </Card>
     );
